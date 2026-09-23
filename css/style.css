@@ -1,4 +1,4 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -6,9 +6,139 @@
 
 body {
     background-color: yellow;
+    background-image: url("/assets/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
 }
 
-body h1{
+.sprite {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 60vh;
+    align-items: center;
+}
+
+h1 {
     text-align: center;
     margin-top: 30px;
+    font-size: 60px;
+    color: white;
+    text-shadow: 3px 3px 0 black;
 }
+
+#score {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: white;
+    text-shadow: 2px 2px 0 black;
+}
+
+#spr {
+    cursor: pointer;
+    transition: transform 0.08s;
+}
+
+#spr:active {
+    transform: scale(0.95)
+}
+
+.shop {
+    position: fixed;
+    right: 30px;
+    top: 150px;
+    width: 300px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.75);
+    border: 3px solid white;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+
+    z-index: 10;
+}
+
+.shop h2 {
+    font-size: 32px;
+
+    margin-bottom: 20px;
+}
+
+.upgrade {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.upgrade h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.upgrade p {
+    margin-bottom: 8px;
+}
+.fact-box h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.fact-box p {
+    min-height: 50px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.fact-box button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.fact-box button:hover {
+    transform: scale(1.03);
+}
+
+.upgrade button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.upgrade button:hover {
+    transform: scale(1.03);
+}
+
+#canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+.fact-box {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
