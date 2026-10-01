@@ -14,4 +14,5 @@ JavaScript.
 
 The goal of the game is to click on the waffle and gradually make upgrades; I plan to add a small leaderboard in the future.
 
+![try](https://developer-vini.github.io/waflle-click/)
 Marcinho loves you all.
