@@ -7,6 +7,9 @@ const scroreElement = document.getElementById("score");
 const forkUpgrade = document.getElementById("fork-upgrade");
 const forkCostElement = document.getElementById("fork-cost")
 
+const cookerUpgrade = document.getElementById("cooker-upgrade");
+const cookerCostElement = document.getElementById("cooker-cost");
+
 const factButton = document.getElementById("fact-button");
 const factElement = document.getElementById("fact");
 
@@ -14,11 +17,14 @@ const clickSound = new Audio("./assets/sound/s.wav");
 let score = 0;
 let forkCost = 25;
 
+let cookerCost = 100;
+let wafflesPerSecond = 0;
+
 let floatingText = [];
 let wafflesPerClick = 1;
+
 factButton.addEventListener("click", async () => {
     factElement.textContent = "Loading...";
-
     try {
         const response = await fetch("https://uselessfacts.jsph.pl/api/v2/facts/random");
         const data = await response.json();
@@ -33,17 +39,15 @@ function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 }
+
 function updateScreen() {
 
     scroreElement.textContent = `Waffles: ${score}`;
-
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+    
     floatingText.forEach((text) => {
         ctx.save();
-
         ctx.font = "bold 28px Arial";
-
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
 
@@ -66,8 +70,6 @@ function updateScreen() {
 
 
 function createFloatingText(x, y) {
-    const rect = btn.getBoundingClientRect();
-
     const text = {
         value: `+${wafflesPerClick}`,
         x: x,
@@ -101,6 +103,24 @@ forkUpgrade.addEventListener("click", () => {
         updateScreen();
     }
 })
+
+cookerUpgrade.addEventListener("click", () => {
+    if (score >= cookerCost) {
+        score -= cookerCost;
+
+        wafflesPerSecond += 1;
+
+        cookerCost *= 2;
+        cookerCostElement.textContent = cookerCost;
+
+        updateScreen();
+    }
+});
+
+setInterval(() => {
+    score += wafflesPerSecond;
+    updateScreen();
+}, 1000);
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
